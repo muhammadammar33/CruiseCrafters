@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +61,7 @@ Route::middleware([
 });
 
 Route::get('/redirect', [HomeController::class, 'redirect']);
+Route::get('/view_category', [AdminController::class, 'view_category']);
+Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
+Route::get('/view_users', [AdminController::class, 'showUsers']);
+Route::get('/userlisting/{term}', [AdminController::class, 'searchUser']);
