@@ -34,6 +34,11 @@ class AdminController extends Controller
         $category->name = $req->name;
         $category->description = $req->description;
 
+        $image = $req->image;
+        $image_new_name = time().'.'.$image->getClientOriginalName();
+        $req->image->move('category_images', $image_new_name);
+        $category->image = $image_new_name;
+
         $category->save();
 
         return back()->withSuccess('Car added successfully');

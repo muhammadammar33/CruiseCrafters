@@ -81,13 +81,29 @@
         </div>
     </li>
     <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+            <i class="mdi mdi-laptop"></i>
+        </span>
+        <span class="menu-title">Category</span>
+        <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{ url('view_category') }}">Add Category</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">View Categories</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+        </ul>
+        </div>
+    </li>
+    {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="{{ url('view_category') }}">
         <span class="menu-icon">
             <i class="mdi mdi-playlist-play"></i>
         </span>
         <span class="menu-title">Category</span>
         </a>
-    </li>
+    </li> --}}
     <li class="nav-item menu-items">
         <a class="nav-link" href="pages/tables/basic-table.html">
         <span class="menu-icon">

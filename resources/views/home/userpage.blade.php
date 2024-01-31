@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="home/css/flaticon.css">
     <link rel="stylesheet" href="home/css/icomoon.css">
     <link rel="stylesheet" href="home/css/style.css">
+    <link rel="stylesheet" href="CSS/styles.css">
   </head>
   <body>
     
@@ -36,6 +37,9 @@
 
     {{-- Trip --}}
     @include('home.trip')
+
+    {{-- Categories --}}
+    @include('home.categories')
 
     {{-- Featured Vehicles --}}
     @include('home.feature')

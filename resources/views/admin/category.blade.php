@@ -24,6 +24,9 @@
 
                             <label class="cat-label" for="categoryDescription">Category Description:</label>
                             <textarea class="cat-input" id="categoryDescription" name="description" rows="4" required></textarea>
+                            
+                            <label class="cat-label" for="categoryImage">Category Description:</label>
+                            <input class="cat-image" type="file" id="categoryImage" name="image" required>
 
                             <button class="cat-button" type="submit">Add Category</button>
                         </form>

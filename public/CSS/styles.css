@@ -50,6 +50,16 @@
     color: black;
 }
 
+.cat-image {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white;
+}
+
 .cat-button {
     /* background-color: #4caf50; */
     color: #fff;
@@ -65,4 +75,10 @@
 
 .cat-button:hover {
     background-color: #45a049;
+}
+
+.cat-img {
+    border-radius: 50%;
+    margin-top: 50%;
+    height: 80px;
 }
