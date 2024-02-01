@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Car;
 
 class AdminController extends Controller
 {
-    public function view_category(){
+    public function category(){
         return view('admin.category');
+    }
+
+    public function car(){
+        $cat = DB::table('categories')->get();
+        return view('admin.car', ['data' => $cat]);
     }
 
     // public function view_users(){
@@ -23,10 +29,61 @@ class AdminController extends Controller
         return view('admin.users', ['data' => $users]);
     }
 
+    public function showCategories(){
+
+        $cat = DB::table('categories')->get();
+        return view('admin.view_categories', ['data' => $cat]);
+    }
+    
+    public function showCars(){
+
+        $car = DB::table('cars')->get();
+        return view('admin.view_cars', ['data' => $car]);
+    }
+
     public function searchUser($term){
         $user = DB::table('users')->where('name','like',"$term%")->get()->where('usertype', 0);
         return ($user);
     }
+
+    public function searchCategory($term){
+        $cat = DB::table('categories')->where('name','like',"$term%")->get();
+        return ($cat);
+    }
+
+    public function searchByCategory($term){
+        $car = DB::table('cars')->where('category', 'like', "$term%")->get();
+        return ($car);
+    }
+    public function searchByMake($term){
+        $car = DB::table('cars')->where('make', 'like', "$term%")->get();
+        return ($car);
+    }
+    public function searchByModel($term){
+        $car = DB::table('cars')->where('model', 'like', "$term%")->get();
+        return ($car);
+    }
+    public function searchByTransmission($term){
+        $car = DB::table('cars')->where('transmission', 'like', "$term%")->get();
+        return ($car);
+    }
+    public function searchByYearup($term){
+        $car = DB::table('cars')->where('year', '>', "$term%")->get();
+        return ($car);
+    }
+    public function searchByYeardown($term){
+        $car = DB::table('cars')->where('year', '<', "$term%")->get();
+        return ($car);
+    }
+    public function searchByRentalPriceup($term){
+        $car = DB::table('cars')->where('rentalprice', '>', "$term%")->get();
+        return ($car);
+    }
+    public function searchByRentalPricedown($term){
+        $car = DB::table('cars')->where('rentalprice', '<', "$term%")->get();
+        return ($car);
+    }
+    
 
     public function add_category(Request $req){
 
@@ -41,6 +98,78 @@ class AdminController extends Controller
 
         $category->save();
 
-        return back()->withSuccess('Car added successfully');
+        return back()->withSuccess('Category added successfully');
+    }
+
+    public function add_car(Request $req){
+
+        $car = new Car();
+        $car->category = $req->category;
+        $car->make = $req->make;
+        $car->model = $req->model;
+        $car->year = $req->year;
+        $car->color = $req->color;
+        $car->mileage = $req->mileage;
+        $car->transmission = $req->transmission;
+        $car->fuel = $req->fuel;
+        $car->rentalprice = $req->rentalprice;
+        $car->description = $req->description;
+        $car->Airconditions = $req->Airconditions;  
+        $car->ChildSeat = $req->ChildSeat;
+        $car->GPS = $req->GPS;
+        $car->Luggage = $req->Luggage;
+        $car->Music = $req->Music;
+        $car->SeatBelt = $req->SeatBelt;    
+        $car->SleepingBed = $req->SleepingBed;
+        $car->Water = $req->Water;  
+        $car->Bluetooth = $req->Bluetooth;
+        $car->OnboardComputers = $req->OnboardComputers;
+        $car->AudioInput = $req->AudioInput;
+        $car->LongTermTrips = $req->LongTermTrips;
+        $car->CarKit = $req->CarKit;    
+        $car->RemoteCentralLocking = $req->RemoteCentralLocking;
+        $car->ClimateControl = $req->ClimateControl;
+
+        $cat = DB::table('categories')->where('name', $req->category)->first();
+
+        if ($cat) {
+            $category = Category::find($cat->id);
+            
+            $category->available += 1;
+            
+            $category->save();
+        }
+
+        
+        $image = $req->image;
+        $image_new_name = time().'.'.$image->getClientOriginalName();
+        $req->image->move('car_images', $image_new_name);
+        $car->image = $image_new_name;
+
+        $car->save();
+
+        return back()->with('message', 'Car added successfully');
+    }
+
+    public function deleteCar(string $id){
+        $car = DB::table('cars')->where('id', $id)->delete();
+
+        // return $car;
+        if ($car) {
+            return redirect()->back()->with('success', 'Car deleted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Car not deleted.');
+        }
+
+        $cat = DB::table('categories')->where('name', $req->category)->first();
+
+        if ($cat) {
+            $category = Category::find($cat->id);
+            
+            $category->available -= 1;
+            
+            $category->save();
+        }
+
     }
 }

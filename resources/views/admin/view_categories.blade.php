@@ -18,10 +18,10 @@
                         <div class="col-12 grid-margin">
                             <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">Users</h2>
+                                <h2 class="card-title">Categories</h2>
 
-                                <div class="search">Search User: 
-                                    <input type="text" id="search" onkeyup=searchUser()>
+                                <div class="search">Search Category: 
+                                    <input type="text" id="search" onkeyup=searchCategory()>
                                     <ul id="userList">
                                         
                                     </ul>
@@ -31,24 +31,18 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th> ID </th>
-                                        <th> Profile Pic </th>
+                                        <th> Sample Image </th>
                                         <th> Name </th>
-                                        <th> Email </th>
-                                        <th> Phone </th>
-                                        <th> Address </th>
+                                        <th> Description </th>
                                         <th> View </th>
                                     </tr>
                                     </thead>
                                     <tbody id="body">
-                                        @foreach ($data as $id=>$user)
+                                        @foreach ($data as $id=>$cat)
                                             <tr>
-                                                <td>{{$user->id}}</td>
-                                                <td><img src="" height="50px" width="50px"></td>
-                                                <td>{{$user->name}}</td>
-                                                <td>{{$user->email}}</td>
-                                                <td>{{$user->phone}}</td>
-                                                <td>{{$user->address}}</td>
+                                                <td><img src="/category_images/{{$cat->image}}" alt="Sample Image" height="50px" width="50px"></td>
+                                                <td>{{$cat->name}}</td>
+                                                <td>{{$cat->description}}</td>
                                                 <td><a href="" class="badge badge-outline-primary">View</a></td>
                                             </tr>
                                         @endforeach

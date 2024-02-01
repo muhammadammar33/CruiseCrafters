@@ -3,10 +3,13 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="car-details">
-                    <div class="img rounded" style="background-image: url(home/images/bg_1.jpg);"></div>
+                    <div class="img rounded">
+                        <img src="/car_images/{{$car->image}}" alt="Car Image" width="100%">
+                    </div>
                     <div class="text text-center">
-                        <span class="subheading">Cheverolet</span>
-                        <h2>Mercedes Grand Sedan</h2>
+                        <span class="subheading">{{$car->make}}</span>
+                        <h2>{{$car->model}}</h2>
+                        <span class="subheading">Rs {{$car->rentalprice}} /day</span>
                     </div>
                 </div>
             </div>
@@ -20,7 +23,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Mileage
-                            <span>40,000</span>
+                            <span>{{$car->mileage}}</span>
                         </h3>
                     </div>
                 </div>
@@ -35,7 +38,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Transmission
-                            <span>Manual</span>
+                            <span>{{$car->transmission}}</span>
                         </h3>
                     </div>
                 </div>
@@ -49,8 +52,8 @@
                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
-                            Seats
-                            <span>5 Adults</span>
+                            Year
+                            <span>{{$car->year}}</span>
                         </h3>
                     </div>
                 </div>
@@ -64,8 +67,8 @@
                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-backpack"></span></div>
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
-                            Luggage
-                            <span>4 Bags</span>
+                            Color
+                            <span>{{$car->color}}</span>
                         </h3>
                     </div>
                 </div>
@@ -80,7 +83,7 @@
                     <div class="text">
                         <h3 class="heading mb-0 pl-3">
                             Fuel
-                            <span>Petrol</span>
+                            <span>{{$car->fuel}}</span>
                         </h3>
                     </div>
                 </div>
@@ -111,37 +114,36 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <ul class="features">
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Child Seat</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Music</li>
+                                            <li class="{{ $car->Airconditions == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->Airconditions == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Airconditions</li>
+                                            <li class="{{ $car->ChildSeat == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->ChildSeat == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Child Seat</li>
+                                            <li class="{{ $car->Luggage == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->Luggage == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Luggage</li>
+                                            <li class="{{ $car->GPS == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->GPS == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>GPS</li>
+                                            <li class="{{ $car->Music == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->Music == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Music</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-4">
                                         <ul class="features">
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
-                                            <li class="remove"><span class="ion-ios-close"></span>Sleeping Bed</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Water</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
-                                            <li class="remove"><span class="ion-ios-close"></span>Onboard computer</li>
+                                            <li class="{{ $car->SeatBelt == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->SeatBelt == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Seat Belt</li>
+                                            <li class="{{ $car->SleepingBed == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->SleepingBed == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Sleeping Bed</li>
+                                            <li class="{{ $car->Water == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->Water == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Water</li>
+                                            <li class="{{ $car->Bluetooth == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->Bluetooth == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Bluetooth</li>
+                                            <li class="{{ $car->OnboardComputers == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->OnboardComputers == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Onboard computer</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-4">
                                         <ul class="features">
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Audio input</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Long Term Trips</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Car Kit</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Remote central locking</li>
-                                            <li class="check"><span class="ion-ios-checkmark"></span>Climate control</li>
+                                            <li class="{{ $car->AudioInput == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->AudioInput == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Audio input</li>
+                                            <li class="{{ $car->LongTermTrips == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->LongTermTrips == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Long Term Trips</li>
+                                            <li class="{{ $car->CarKit == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->CarKit == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Car Kit</li>
+                                            <li class="{{ $car->RemoteCentralLocking == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->RemoteCentralLocking == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Remote Central Locking</li>
+                                            <li class="{{ $car->ClimateControl == 'on' ? 'check' : 'remove' }}"><span class="{{ $car->ClimateControl == 'on' ? 'ion-ios-checkmark' : 'ion-ios-close' }}"></span>Climate Control</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                    <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                            <p>{{$car->description}}</p>
                             </div>
 
                             <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">

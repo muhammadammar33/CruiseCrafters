@@ -1,21 +1,26 @@
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row">
+            @foreach ($data as $car)
+            @if ($car)
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(home/images/car-1.jpg);">
+                    <div class="img rounded d-flex align-items-end">
+                        <img src="/car_images/{{$car->image}}" alt="Car Image" height="100%" width="100%">
                     </div>
                     <div class="text">
-                        <h2 class="mb-0"><a href="/carDetail">Mercedes Grand Sedan</a></h2>
+                        <h2 class="mb-0"><a href="/carDetail">{{$car->model}}</a></h2>
                         <div class="d-flex mb-3">
-                            <span class="cat">Cheverolet</span>
-                            <p class="price ml-auto">$500 <span>/day</span></p>
+                            <span class="cat">{{$car->make}}</span>
+                            <p class="price ml-auto">Rs{{$car->rentalprice}} <span>/day</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="/carDetail" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="{{ route('carDetail', $car->id) }}" class="btn btn-secondary py-2 ml-1">Details</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            @endif
+            @endforeach
+            {{-- <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
                     <div class="img rounded d-flex align-items-end" style="background-image: url(home/images/car-2.jpg);">
                     </div>
@@ -171,7 +176,7 @@
                         <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="/carDetail" class="btn btn-secondary py-2 ml-1">Details</a></p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row mt-5">
     <div class="col text-center">

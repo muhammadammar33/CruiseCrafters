@@ -2,7 +2,7 @@
     <div class="container">
     <div class="row justify-content-center mb-5">
         <div class="col-md-7 text-center heading-section ftco-animate">
-        <h2 class="mb-3">Categories</h2>
+        <h2 class="mb-2">Categories</h2>
         </div>
     </div>
     
@@ -16,8 +16,10 @@
                     <img class="cat-img" src="/category_images/{{$cat->image}}" alt="Category Sample">
                 </div>
                 <div class="text pt-4">
-                <p class="mb-4">{{$cat->description}}</p>
-                <p class="name">{{$cat->name}}</p>
+                    <p class="name">{{$cat->name}}</p>
+                    <p class="mb-3">{{$cat->description}}</p>
+                    <p class="avail"><span class="count">{{$cat->available}}</span> {{$cat->name}}s are available</p>
+                    <p><a href="{{ route('cars', $cat->name) }}" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
                 {{-- <span class="position">Marketing Manager</span> --}}
                 </div>
             </div>

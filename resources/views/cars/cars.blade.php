@@ -33,7 +33,7 @@
         
         {{-- Hero --}}
         @include('cars.hero')
-            
+        
         {{-- Car Container --}}
         @include('cars.carcontainer')
         

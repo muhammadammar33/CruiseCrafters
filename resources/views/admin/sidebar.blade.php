@@ -65,34 +65,50 @@
         </a>
     </li>
     <li class="nav-item menu-items">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
         <span class="menu-icon">
-            <i class="mdi mdi-laptop"></i>
+            <i class="mdi mdi-account-circle"></i>
         </span>
         <span class="menu-title">User Management</span>
         <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="ui-user">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('view_users')}}">Users</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li> --}}
         </ul>
         </div>
     </li>
     <li class="nav-item menu-items">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#ui-cat" aria-expanded="false" aria-controls="ui-basic">
         <span class="menu-icon">
-            <i class="mdi mdi-laptop"></i>
+            <i class="mdi mdi-playlist-play"></i>
         </span>
         <span class="menu-title">Category</span>
         <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="ui-cat">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('view_category') }}">Add Category</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">View Categories</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('category') }}">Add Category</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('view_categories') }}">View Categories</a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li> --}}
+        </ul>
+        </div>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#ui-car" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+            <i class="mdi mdi-car"></i>
+        </span>
+        <span class="menu-title">Cars</span>
+        <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-car">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{ url('car') }}">Add Car</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('view_cars') }}">View Car</a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li> --}}
         </ul>
         </div>
     </li>
@@ -104,7 +120,7 @@
         <span class="menu-title">Category</span>
         </a>
     </li> --}}
-    <li class="nav-item menu-items">
+    {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="pages/tables/basic-table.html">
         <span class="menu-icon">
             <i class="mdi mdi-table-large"></i>
@@ -138,11 +154,11 @@
         </a>
         <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+            <li class="nav-item"> <a class="nav-link" href="admin/pages/samples/blank-page.html"> Blank Page </a></li>
+            <li class="nav-item"> <a class="nav-link" href="admin/pages/samples/error-404.html"> 404 </a></li>
+            <li class="nav-item"> <a class="nav-link" href="admin/pages/samples/error-500.html"> 500 </a></li>
+            <li class="nav-item"> <a class="nav-link" href="admin/pages/samples/login.html"> Login </a></li>
+            <li class="nav-item"> <a class="nav-link" href="admin/pages/samples/register.html"> Register </a></li>
         </ul>
         </div>
     </li>
@@ -153,6 +169,6 @@
         </span>
         <span class="menu-title">Documentation</span>
         </a>
-    </li>
+    </li> --}}
     </ul>
 </nav>
