@@ -150,6 +150,47 @@ class AdminController extends Controller
 
         return back()->with('message', 'Car added successfully');
     }
+    
+    public function update_car(Request $req,string $id){
+
+        $car = Car::find($id);
+        $car->category = $req->category;
+        $car->make = $req->make;
+        $car->model = $req->model;
+        $car->year = $req->year;
+        $car->color = $req->color;
+        $car->mileage = $req->mileage;
+        $car->transmission = $req->transmission;
+        $car->fuel = $req->fuel;
+        $car->rentalprice = $req->rentalprice;
+        $car->description = $req->description;
+        $car->Airconditions = $req->Airconditions;  
+        $car->ChildSeat = $req->ChildSeat;
+        $car->GPS = $req->GPS;
+        $car->Luggage = $req->Luggage;
+        $car->Music = $req->Music;
+        $car->SeatBelt = $req->SeatBelt;    
+        $car->SleepingBed = $req->SleepingBed;
+        $car->Water = $req->Water;  
+        $car->Bluetooth = $req->Bluetooth;
+        $car->OnboardComputers = $req->OnboardComputers;
+        $car->AudioInput = $req->AudioInput;
+        $car->LongTermTrips = $req->LongTermTrips;
+        $car->CarKit = $req->CarKit;    
+        $car->RemoteCentralLocking = $req->RemoteCentralLocking;
+        $car->ClimateControl = $req->ClimateControl;
+        
+        $image = $req->image;
+        if ($image) {
+            $image_new_name = time().'.'.$image->getClientOriginalName();
+            $req->image->move('car_images', $image_new_name);
+            $car->image = $image_new_name;
+        }
+
+        $car->save();
+
+        return redirect('view_cars')->with('message', $car->model. ' updated successfully');
+    }
 
     public function deleteCar(string $id){
         $car = DB::table('cars')->where('id', $id)->delete();
@@ -171,5 +212,15 @@ class AdminController extends Controller
             $category->save();
         }
 
+    }
+
+    public function updateCarPage(string $id){
+        $car = Car::find($id);
+        $cat = Category::all()->where('name', '!=', "$car->category");
+        return view('admin.updateCar', compact('car', 'cat'));
+        // $car = Car::where('id', $id)->get();
+        // // return response()->json($car);
+        // // return $car;
+        // return view('admin.updateCar', ['car' => $car]);
     }
 }

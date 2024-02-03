@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="CSS/styles.css">
   </head>
   <body>
+
+    @if(session('error'))
+        <script>alert("{{ session('error') }}");</script>
+    @endif
     
     <!-- Navigation -->
 	  @include('home.nav')

@@ -20,6 +20,13 @@
                             <div class="card-body">
                                 <h2 class="card-title">Cars</h2>
 
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                                        {{session()->get('message')}}
+                                    </div>
+                                @endif
+
                                 @if (session('success'))
                                     <div class="alert alert-success">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
@@ -123,8 +130,8 @@
                                                 <td>{{$car->transmission}}</td>
                                                 <td>{{$car->rentalprice}}</td>
                                                 <td><a href="{{ route('carDetail', $car->id) }}" class="badge badge-outline-primary">View</a></td>
-                                                <td><a href="" class="badge badge-outline-success">Edit</a></td>
-                                                <td><a href="{{ route('deleteCar', $car->id) }}" class="badge badge-outline-danger">Delete</a></td>
+                                                <td><a href="{{ route('updateCarPage', $car->id) }}" class="badge badge-outline-success">Edit</a></td>
+                                                <td><a href="{{ route('deleteCar', $car->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete {{$car->model}}?')">Delete</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -47,9 +47,15 @@ class HomeController extends Controller
     }
 
     public function cars(string $name){
-        $car = Car::where('category', $name)->get();
+        $car = Car::where('category', $name)->paginate(9);
         // return response()->json($car);
         // return $car;
-        return view('cars.cars', ['data' => $car]);
+        if (isset($car)) {
+            return view('cars.cars', ['data' => $car]);
+        } else {
+            return redirect()->back()->with('error', 'Car data not found.');
+        }
+        
+        
     }
 }

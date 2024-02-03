@@ -71,12 +71,14 @@ Route::get('/cars{name}', [HomeController::class, 'cars'])->name('cars');
 
 Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
 Route::post('/add_car', [AdminController::class, 'add_car'])->name('add_car');
+Route::post('/update_car{id}', [AdminController::class, 'update_car'])->name('update_car');
 
 
 
 
 Route::get('/carDetail{id}', [HomeController::class, 'carDetail'])->name('carDetail');
 Route::get('/deleteCar/{id}', [AdminController::class, 'deleteCar'])->name('deleteCar');
+Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->name('updateCarPage');
 
 
 
