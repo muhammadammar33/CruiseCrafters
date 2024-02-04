@@ -77,6 +77,7 @@ Route::post('/update_car{id}', [AdminController::class, 'update_car'])->name('up
 
 
 Route::get('/carDetail{id}', [HomeController::class, 'carDetail'])->name('carDetail');
+Route::get('/book_now{id}', [HomeController::class, 'book_now'])->name('book_now');
 Route::get('/deleteCar/{id}', [AdminController::class, 'deleteCar'])->name('deleteCar');
 Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->name('updateCarPage');
 

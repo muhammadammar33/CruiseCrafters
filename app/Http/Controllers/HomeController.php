@@ -55,7 +55,15 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with('error', 'Car data not found.');
         }
-        
-        
+    }
+
+    public function book_now(string $id){
+        if(Auth::id()){
+            return back();
+            // $car = Car::where('id', $id)->first();
+            // return view('book_now.book_now', ['car' => $car]);
+        }else {
+            return redirect('login');
+        }
     }
 }

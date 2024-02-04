@@ -14,7 +14,7 @@
                             <span class="cat">{{$car->make}}</span>
                             <p class="price ml-auto">Rs{{$car->rentalprice}} <span>/day</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="{{ route('carDetail', $car->id) }}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                        <p class="d-flex mb-0 d-block"><a href="{{route('book_now', $car->id)}}" class="btn btn-primary py-2 mr-1">Book now</a> <a href="{{ route('carDetail', $car->id) }}" class="btn btn-secondary py-2 ml-1">Details</a></p>
                     </div>
                 </div>
             </div>
