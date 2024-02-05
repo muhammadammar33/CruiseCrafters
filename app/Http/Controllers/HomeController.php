@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\bookings;
 
 class HomeController extends Controller
 {
@@ -57,11 +58,51 @@ class HomeController extends Controller
         }
     }
 
-    public function book_now(string $id){
+    public function book(string $id){
         if(Auth::id()){
-            return back();
-            // $car = Car::where('id', $id)->first();
-            // return view('book_now.book_now', ['car' => $car]);
+            $user = Auth::user();
+            $car = Car::find($id);
+            return view('cars.book', ['car' => $car, 'user' => $user]);
+        }else {
+            return redirect('login');
+        }
+        
+    }
+
+    public function book_now(Request $req, string $id){
+        if(Auth::id()){
+            $user = Auth::user();
+            
+            $car = Car::find($id);
+            // return response()->json($car);
+
+            $book = new bookings;
+            $book->name = $user->name;
+            $book->email = $user->email;
+            $book->phone = $user->phone;
+            $book->address = $user->address;
+            $book->make = $car->make;
+            $book->model = $car->model;
+            $book->quantity = $req->quantity;
+            $book->fromdate = $req->date;
+            $book->days = $req->days;
+            $fromDate = strtotime($req->date);
+            $toDate = strtotime("+$req->days days", $fromDate);
+            $book->todate = date('Y-m-d', $toDate);
+            $book->onedayprice = $car->rentalprice;
+            $book->totalprice = $req->quantity * $car->rentalprice * $req->days;
+            $book->image = $car->image;
+            $book->user_id = $user->id;
+            $book->car_id = $car->id;
+            
+            $cat = DB::table('categories')->where('name', $car->category)->first();
+
+            $car->totalCars -= $req->quantity;
+            $car->save();
+
+            $book->save();
+
+            return redirect(route('cars', $cat->name))->with('message', $car->model. ' booked successfully');
         }else {
             return redirect('login');
         }

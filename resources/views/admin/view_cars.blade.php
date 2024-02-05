@@ -113,6 +113,7 @@
                                         <th> Color </th>
                                         <th> Transmission </th>
                                         <th> Rental Price </th>
+                                        <th> Total Cars </th>
                                         <th> View </th>
                                         <th> Edit </th>
                                         <th> Delete </th>
@@ -129,6 +130,7 @@
                                                 <td>{{$car->color}}</td>
                                                 <td>{{$car->transmission}}</td>
                                                 <td>{{$car->rentalprice}}</td>
+                                                <td>{{$car->totalCars}}</td>
                                                 <td><a href="{{ route('carDetail', $car->id) }}" class="badge badge-outline-primary">View</a></td>
                                                 <td><a href="{{ route('updateCarPage', $car->id) }}" class="badge badge-outline-success">Edit</a></td>
                                                 <td><a href="{{ route('deleteCar', $car->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete {{$car->model}}?')">Delete</a></td>

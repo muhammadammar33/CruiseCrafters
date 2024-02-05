@@ -19,7 +19,12 @@
                     <p class="name">{{$cat->name}}</p>
                     <p class="mb-3">{{$cat->description}}</p>
                     <p class="avail"><span class="count">{{$cat->available}}</span> {{$cat->name}}s are available</p>
-                    <p><a href="{{ route('cars', $cat->name) }}" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
+                    @if ($cat->available > 0)
+                        <p><a href="{{ route('cars', $cat->name) }}" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
+                    @else
+                        <p><a href="" onclick="return alert('No cars in this category !!!!!')" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
+                    @endif
+                    
                 {{-- <span class="position">Marketing Manager</span> --}}
                 </div>
             </div>

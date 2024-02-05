@@ -113,6 +113,7 @@ class AdminController extends Controller
         $car->transmission = $req->transmission;
         $car->fuel = $req->fuel;
         $car->rentalprice = $req->rentalprice;
+        $car->totalCars = $req->totalCars;
         $car->description = $req->description;
         $car->Airconditions = $req->Airconditions;  
         $car->ChildSeat = $req->ChildSeat;
@@ -163,6 +164,7 @@ class AdminController extends Controller
         $car->transmission = $req->transmission;
         $car->fuel = $req->fuel;
         $car->rentalprice = $req->rentalprice;
+        $car->totalCars = $req->totalCars;
         $car->description = $req->description;
         $car->Airconditions = $req->Airconditions;  
         $car->ChildSeat = $req->ChildSeat;

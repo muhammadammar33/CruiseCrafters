@@ -79,6 +79,10 @@
                                         <input type="number" class="cat-input" id="rentalprice" name="rentalprice" value="{{ $car->rentalprice }}" required>
                                     </div>
                                     <div class="form-group">
+                                        <label>Total Cars</label>
+                                        <input type="number" class="cat-input" id="totalCars" name="totalCars" value="{{ $car->totalCars }}" required>
+                                    </div>
+                                    <div class="form-group">
                                         <h4>Features</h4>
                                         <br>
                                         <input type="checkbox" id="ac" class="cat-input" id="Airconditions" name="Airconditions" @checked($car->Airconditions == 'on')>

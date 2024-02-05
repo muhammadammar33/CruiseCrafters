@@ -107,7 +107,7 @@
         <div class="collapse" id="ui-car">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{ url('car') }}">Add Car</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('view_cars') }}">View Car</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('view_cars') }}">View Cars</a></li>
             {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li> --}}
         </ul>
         </div>
