@@ -30,9 +30,9 @@ Route::get('/pricing', function () {
     return view('pricing.pricing');
 });
 
-Route::get('/cars', function () {
-    return view('cars.cars');
-});
+// Route::get('/cars', function () {
+//     return view('cars.cars');
+// });
 
 // Route::get('/carDetail', function () {
 //     return view('carDetail.carDetail');
@@ -50,6 +50,10 @@ Route::get('/contact', function () {
     return view('contact.contact');
 });
 
+// Route::get('/mybookings', function () {
+//     return view('mybookings.bookings');
+// });
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -63,7 +67,7 @@ Route::middleware([
 Route::get('/redirect', [HomeController::class, 'redirect']);
 Route::get('/category', [AdminController::class, 'category']);
 Route::get('/car', [AdminController::class, 'car']);
-// Route::get('/cars', [HomeController::class, 'cars']);
+Route::get('/allcars', [HomeController::class, 'allcars']);
 Route::get('/cars{name}', [HomeController::class, 'cars'])->name('cars');
 
 
@@ -72,6 +76,7 @@ Route::get('/cars{name}', [HomeController::class, 'cars'])->name('cars');
 Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
 Route::post('/add_car', [AdminController::class, 'add_car'])->name('add_car');
 Route::post('/update_car{id}', [AdminController::class, 'update_car'])->name('update_car');
+Route::post('/updatebooking{id}', [HomeController::class, 'updatebooking'])->name('updatebooking');
 
 
 
@@ -81,9 +86,11 @@ Route::get('/book{id}', [HomeController::class, 'book'])->name('book');
 Route::post('/book_now{id}', [HomeController::class, 'book_now'])->name('book_now');
 Route::get('/deleteCar/{id}', [AdminController::class, 'deleteCar'])->name('deleteCar');
 Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->name('updateCarPage');
+Route::get('/updateBookingPage/{id}', [HomeController::class, 'updateBookingPage'])->name('updateBookingPage');
 
 
 
+Route::get('/view_bookings', [AdminController::class, 'showbookings']);
 Route::get('/view_users', [AdminController::class, 'showUsers']);
 Route::get('/view_categories', [AdminController::class, 'showCategories']);
 Route::get('/view_cars', [AdminController::class, 'showCars']);

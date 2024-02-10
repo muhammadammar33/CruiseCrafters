@@ -29,6 +29,12 @@ class AdminController extends Controller
         return view('admin.users', ['data' => $users]);
     }
 
+    public function showbookings(){
+
+        $bookings = DB::table('bookings')->get();
+        return view('mybookings.bookings', ['data' => $bookings]);
+    }
+
     public function showCategories(){
 
         $cat = DB::table('categories')->get();
