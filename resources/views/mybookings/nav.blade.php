@@ -13,11 +13,11 @@
             <li class="nav-item"><a href="/pricing" class="nav-link">Pricing</a></li>
             <li class="nav-item"><a href="{{ url('allcars') }}" class="nav-link">Cars</a></li>
             <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
-            <li class="nav-item active"><a href="/contact" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
             @if (Route::has('login'))
                 
                     @auth
-                    <li class="nav-item"><a href="/view_bookings" class="nav-link">My Bookings</a></li>
+                    <li class="nav-item active"><a href="/view_bookings" class="nav-link">My Bookings</a></li>
                     <li class="nav-item">
                         <x-app-layout>
 

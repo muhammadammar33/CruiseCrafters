@@ -112,6 +112,22 @@
         </ul>
         </div>
     </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#ui-booking" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+            <i class="mdi mdi-car"></i>
+        </span>
+        <span class="menu-title">Bookings</span>
+        <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-booking">
+        <ul class="nav flex-column sub-menu">
+            {{-- <li class="nav-item"> <a class="nav-link" href="{{ url('car') }}">Add Car</a></li> --}}
+            <li class="nav-item"> <a class="nav-link" href="{{ url('show_bookings') }}">View Bookings</a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li> --}}
+        </ul>
+        </div>
+    </li>
     {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="{{ url('view_category') }}">
         <span class="menu-icon">

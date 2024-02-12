@@ -118,6 +118,16 @@ class HomeController extends Controller
             return redirect('login');
         }
     }
+
+    public function showbookings(){
+        if(Auth::check()){
+            $user = Auth::user();
+            $bookings = DB::table('bookings')->where('name', $user->name)->orderBy('todate')->get();
+            return view('mybookings.bookings', ['data' => $bookings]);
+        }else{  
+            return redirect('/login')->with('message', 'To view bookings, you must be logged in.');;
+        }
+    }
     
     public function updatebooking(Request $req, string $id){
         if(Auth::id()){
@@ -168,5 +178,24 @@ class HomeController extends Controller
         $car->save();
         // return response()->json($car);
         return view('mybookings.book', compact('car', 'booking', 'user'));
+    }
+
+    public function deleteBooking(string $id){
+        $booking = DB::table('bookings')->where('id', $id)->first();
+
+        if ($booking) {
+            $car = Car::find($booking->car_id);
+            
+            DB::table('bookings')->where('id', $id)->delete();
+
+            if ($car) {
+                $car->totalCars += $booking->quantity;
+                $car->save();
+            }
+
+            return redirect()->back()->with('message', 'Booking deleted successfully.');
+        } else {
+            return redirect()->back()->with('message', 'Booking not found.');
+        }
     }
 }

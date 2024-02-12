@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Car;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -30,9 +31,8 @@ class AdminController extends Controller
     }
 
     public function showbookings(){
-
-        $bookings = DB::table('bookings')->get();
-        return view('mybookings.bookings', ['data' => $bookings]);
+        $bookings = DB::table('bookings')->orderBy('todate')->get();
+        return view('admin.view_bookings', ['data' => $bookings]);
     }
 
     public function showCategories(){
@@ -57,6 +57,7 @@ class AdminController extends Controller
         return ($cat);
     }
 
+    // View Cars
     public function searchByCategory($term){
         $car = DB::table('cars')->where('category', 'like', "$term%")->get();
         return ($car);
@@ -90,6 +91,20 @@ class AdminController extends Controller
         return ($car);
     }
     
+    // View Bookings
+    public function searchByUser($term){
+        $bookings = DB::table('bookings')->where('name', 'like', "$term%")->get();
+        return ($bookings);
+    }
+    public function searchBookingByMake($term){
+        $bookings = DB::table('bookings')->where('make', 'like', "$term%")->get();
+        return ($bookings);
+    }
+    public function searchBookingByModel($term){
+        $bookings = DB::table('bookings')->where('model', 'like', "$term%")->get();
+        return ($bookings);
+    }
+
 
     public function add_category(Request $req){
 

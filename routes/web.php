@@ -85,12 +85,14 @@ Route::get('/carDetail{id}', [HomeController::class, 'carDetail'])->name('carDet
 Route::get('/book{id}', [HomeController::class, 'book'])->name('book');
 Route::post('/book_now{id}', [HomeController::class, 'book_now'])->name('book_now');
 Route::get('/deleteCar/{id}', [AdminController::class, 'deleteCar'])->name('deleteCar');
+Route::get('/deleteBooking/{id}', [HomeController::class, 'deleteBooking'])->name('deleteBooking');
 Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->name('updateCarPage');
 Route::get('/updateBookingPage/{id}', [HomeController::class, 'updateBookingPage'])->name('updateBookingPage');
 
 
 
-Route::get('/view_bookings', [AdminController::class, 'showbookings']);
+Route::get('/show_bookings', [AdminController::class, 'showbookings']);
+Route::get('/view_bookings', [HomeController::class, 'showbookings']);
 Route::get('/view_users', [AdminController::class, 'showUsers']);
 Route::get('/view_categories', [AdminController::class, 'showCategories']);
 Route::get('/view_cars', [AdminController::class, 'showCars']);
@@ -114,3 +116,9 @@ Route::get('/carlistingyearup/{term}', [AdminController::class, 'searchByYearup'
 Route::get('/carlistingyeardown/{term}', [AdminController::class, 'searchByYeardown']);
 Route::get('/carlistingrentalpriceup/{term}', [AdminController::class, 'searchByRentalPriceup']);
 Route::get('/carlistingrentalpricedown/{term}', [AdminController::class, 'searchByRentalPricedown']);
+
+
+
+Route::get('/bookinglistinguser/{term}', [AdminController::class, 'searchByUser']);
+Route::get('/bookinglistingmake/{term}', [AdminController::class, 'searchBookingByMake']);
+Route::get('/bookinglistingmodel/{term}', [AdminController::class, 'searchBookingByModel']);

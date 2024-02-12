@@ -51,7 +51,7 @@
                                     
                                     <td><a href="{{ route('carDetail', $bookings->car_id) }}" class="badge badge-outline-primary">View</a></td>
                                     <td><a href="{{ route('updateBookingPage', $bookings->id) }}" class="badge badge-outline-success">Edit</a></td>
-                                    <td><a href="{{ route('deleteCar', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
+                                    <td><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

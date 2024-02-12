@@ -938,3 +938,285 @@ function suggest(){
                         console.error('Error: ', error );
                     });
 }
+
+// View Bookings
+
+function searchByUser(){
+    var term = document.getElementById("search").value;
+    const endpoint ='/bookinglistinguser/'+term;
+    const userList = document.getElementById('userList');
+    userList.innerHTML="";
+
+    console.log(endpoint);
+    
+
+    //Fetch API
+    fetch(endpoint).then(response => {if(!response.ok){throw new Error ('HTTP error! Status: $(response.status)');
+                                            }
+                                    return response.json();
+                                    })
+                    .then(data => {
+                        resultsContainer = document.getElementById("body");
+                        if (!previousData) {
+                            previousData = resultsContainer.innerHTML;
+                        } else {
+                            resultsContainer.innerHTML = ''; // Clear previous data
+                        }
+                        data.forEach(booking => {
+                            var tableRow = document.createElement("tr");
+
+                            var tableData1 = document.createElement("td");
+                            tableData1.innerHTML = booking.name;
+                            var tableData2 = document.createElement("td");
+                            tableData2.innerHTML = booking.email;
+                            var tableData3 = document.createElement("td");
+                            tableData3.innerHTML = booking.phone;
+                            var tableData4 = document.createElement("td");
+                            tableData4.innerHTML = booking.address;
+                            var tableData5 = document.createElement("td");
+                            // tableData5.innerHTML = car.year;
+                            var tableData6 = document.createElement("td");
+                            tableData6.innerHTML = booking.make;
+                            var tableData7 = document.createElement("td");
+                            tableData7.innerHTML = booking.model;
+                            var tableData8 = document.createElement("td");
+                            tableData8.innerHTML = booking.quantity;
+                            var tableData9 = document.createElement("td");
+                            tableData9.innerHTML = booking.fromdate;
+                            var tableData10 = document.createElement("td");
+                            tableData10.innerHTML = booking.days;
+                            var tableData11 = document.createElement("td");
+                            tableData11.innerHTML = booking.todate;
+                            var tableData12 = document.createElement("td");
+                            tableData12.innerHTML = booking.totalprice;
+                            var tableData13 = document.createElement("td");
+
+                            var image = document.createElement("img");
+                            image.src = "/car_images/" + car.image;
+                            image.height = "50px";
+                            image.width = "50px";
+
+                            var link3 = document.createElement("a");
+                            link3.href = "";
+                            link3.className = "badge badge-outline-danger";
+                            link3.innerText = "Delete";
+
+                            // link.className = "badge-outline-primary";
+                            // date = new Date(users.created_at);
+                            // month = date.getMonth();
+                            // year = date.getFullYear();
+                            // day = date.getDate();
+                            
+                            // console.log(new Date(users.created_at));
+
+                            tableData5.appendChild(image);
+                            tableRow.appendChild(tableData1);
+                            
+                            tableRow.appendChild(tableData2);
+                            tableRow.appendChild(tableData3);
+                            tableRow.appendChild(tableData4);
+                            tableRow.appendChild(tableData5);
+                            tableRow.appendChild(tableData6);
+                            tableRow.appendChild(tableData7);
+                            tableRow.appendChild(tableData8);
+                            tableData13.appendChild(link3);
+                            tableRow.appendChild(tableData9);
+                            tableRow.appendChild(tableData10);
+                            tableRow.appendChild(tableData11);
+                            tableRow.appendChild(tableData12);
+                            tableRow.appendChild(tableData13);
+                            
+                            resultsContainer.appendChild(tableRow);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error: ', error );
+                        resultsContainer.innerHTML = previousData;
+                    });
+}
+function searchBookingByMake(){
+    var term = document.getElementById("searchmake").value;
+    const endpoint ='/bookinglistingmake/'+term;
+    const userList = document.getElementById('userList');
+    userList.innerHTML="";
+
+    console.log(endpoint);
+    
+
+    //Fetch API
+    fetch(endpoint).then(response => {if(!response.ok){throw new Error ('HTTP error! Status: $(response.status)');
+                                            }
+                                    return response.json();
+                                    })
+                    .then(data => {
+                        resultsContainer = document.getElementById("body");
+                        if (!previousData) {
+                            previousData = resultsContainer.innerHTML;
+                        } else {
+                            resultsContainer.innerHTML = ''; // Clear previous data
+                        }
+                        data.forEach(booking => {
+                            var tableRow = document.createElement("tr");
+
+                            var tableData1 = document.createElement("td");
+                            tableData1.innerHTML = booking.name;
+                            var tableData2 = document.createElement("td");
+                            tableData2.innerHTML = booking.email;
+                            var tableData3 = document.createElement("td");
+                            tableData3.innerHTML = booking.phone;
+                            var tableData4 = document.createElement("td");
+                            tableData4.innerHTML = booking.address;
+                            var tableData5 = document.createElement("td");
+                            // tableData5.innerHTML = car.year;
+                            var tableData6 = document.createElement("td");
+                            tableData6.innerHTML = booking.make;
+                            var tableData7 = document.createElement("td");
+                            tableData7.innerHTML = booking.model;
+                            var tableData8 = document.createElement("td");
+                            tableData8.innerHTML = booking.quantity;
+                            var tableData9 = document.createElement("td");
+                            tableData9.innerHTML = booking.fromdate;
+                            var tableData10 = document.createElement("td");
+                            tableData10.innerHTML = booking.days;
+                            var tableData11 = document.createElement("td");
+                            tableData11.innerHTML = booking.todate;
+                            var tableData12 = document.createElement("td");
+                            tableData12.innerHTML = booking.totalprice;
+                            var tableData13 = document.createElement("td");
+
+                            var image = document.createElement("img");
+                            image.src = "/car_images/" + car.image;
+                            image.height = "50px";
+                            image.width = "50px";
+
+                            var link3 = document.createElement("a");
+                            link3.href = "";
+                            link3.className = "badge badge-outline-danger";
+                            link3.innerText = "Delete";
+
+                            // link.className = "badge-outline-primary";
+                            // date = new Date(users.created_at);
+                            // month = date.getMonth();
+                            // year = date.getFullYear();
+                            // day = date.getDate();
+                            
+                            // console.log(new Date(users.created_at));
+
+                            tableData5.appendChild(image);
+                            tableRow.appendChild(tableData1);
+                            
+                            tableRow.appendChild(tableData2);
+                            tableRow.appendChild(tableData3);
+                            tableRow.appendChild(tableData4);
+                            tableRow.appendChild(tableData5);
+                            tableRow.appendChild(tableData6);
+                            tableRow.appendChild(tableData7);
+                            tableRow.appendChild(tableData8);
+                            tableData13.appendChild(link3);
+                            tableRow.appendChild(tableData9);
+                            tableRow.appendChild(tableData10);
+                            tableRow.appendChild(tableData11);
+                            tableRow.appendChild(tableData12);
+                            tableRow.appendChild(tableData13);
+                            
+                            resultsContainer.appendChild(tableRow);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error: ', error );
+                        resultsContainer.innerHTML = previousData;
+                    });
+}
+function searchBookingByModel(){
+    var term = document.getElementById("searchmodel").value;
+    const endpoint ='/bookinglistingmodel/'+term;
+    const userList = document.getElementById('userList');
+    userList.innerHTML="";
+
+    console.log(endpoint);
+    
+
+    //Fetch API
+    fetch(endpoint).then(response => {if(!response.ok){throw new Error ('HTTP error! Status: $(response.status)');
+                                            }
+                                    return response.json();
+                                    })
+                    .then(data => {
+                        resultsContainer = document.getElementById("body");
+                        if (!previousData) {
+                            previousData = resultsContainer.innerHTML;
+                        } else {
+                            resultsContainer.innerHTML = ''; // Clear previous data
+                        }
+                        data.forEach(booking => {
+                            var tableRow = document.createElement("tr");
+
+                            var tableData1 = document.createElement("td");
+                            tableData1.innerHTML = booking.name;
+                            var tableData2 = document.createElement("td");
+                            tableData2.innerHTML = booking.email;
+                            var tableData3 = document.createElement("td");
+                            tableData3.innerHTML = booking.phone;
+                            var tableData4 = document.createElement("td");
+                            tableData4.innerHTML = booking.address;
+                            var tableData5 = document.createElement("td");
+                            // tableData5.innerHTML = car.year;
+                            var tableData6 = document.createElement("td");
+                            tableData6.innerHTML = booking.make;
+                            var tableData7 = document.createElement("td");
+                            tableData7.innerHTML = booking.model;
+                            var tableData8 = document.createElement("td");
+                            tableData8.innerHTML = booking.quantity;
+                            var tableData9 = document.createElement("td");
+                            tableData9.innerHTML = booking.fromdate;
+                            var tableData10 = document.createElement("td");
+                            tableData10.innerHTML = booking.days;
+                            var tableData11 = document.createElement("td");
+                            tableData11.innerHTML = booking.todate;
+                            var tableData12 = document.createElement("td");
+                            tableData12.innerHTML = booking.totalprice;
+                            var tableData13 = document.createElement("td");
+
+                            var image = document.createElement("img");
+                            image.src = "/car_images/" + car.image;
+                            image.height = "50px";
+                            image.width = "50px";
+
+                            var link3 = document.createElement("a");
+                            link3.href = "";
+                            link3.className = "badge badge-outline-danger";
+                            link3.innerText = "Delete";
+
+                            // link.className = "badge-outline-primary";
+                            // date = new Date(users.created_at);
+                            // month = date.getMonth();
+                            // year = date.getFullYear();
+                            // day = date.getDate();
+                            
+                            // console.log(new Date(users.created_at));
+
+                            tableData5.appendChild(image);
+                            tableRow.appendChild(tableData1);
+                            
+                            tableRow.appendChild(tableData2);
+                            tableRow.appendChild(tableData3);
+                            tableRow.appendChild(tableData4);
+                            tableRow.appendChild(tableData5);
+                            tableRow.appendChild(tableData6);
+                            tableRow.appendChild(tableData7);
+                            tableRow.appendChild(tableData8);
+                            tableData13.appendChild(link3);
+                            tableRow.appendChild(tableData9);
+                            tableRow.appendChild(tableData10);
+                            tableRow.appendChild(tableData11);
+                            tableRow.appendChild(tableData12);
+                            tableRow.appendChild(tableData13);
+                            
+                            resultsContainer.appendChild(tableRow);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error: ', error );
+                        resultsContainer.innerHTML = previousData;
+                    });
+}
