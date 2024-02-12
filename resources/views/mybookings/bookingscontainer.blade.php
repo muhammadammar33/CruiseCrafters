@@ -32,6 +32,7 @@
                             <th style="text-align: center;"> To </th>
                             <th style="text-align: center;"> Days </th>
                             <th style="text-align: center;"> Total Payment </th>
+                            <th style="text-align: center;"> Payment Status </th>
                             <th style="text-align: center;"> View </th>
                             <th style="text-align: center;"> Edit </th>
                             <th style="text-align: center;"> Delete </th>
@@ -48,6 +49,11 @@
                                     <td style="text-align: center;">{{$bookings->todate}}</td>
                                     <td style="text-align: center;">{{$bookings->days}}</td>
                                     <td style="text-align: center;">{{$bookings->totalprice}}</td>
+                                    @if ($bookings->payment_status == 'pending')
+                                        <td style="text-align: center;"><a href="{{ route('completePayment', $bookings->id) }}" class="badge badge-outline-success">Complete Payment</a></td>
+                                    @else
+                                        <td style="text-align: center;">{{$bookings->payment_status}}</td>
+                                    @endif
                                     
                                     <td><a href="{{ route('carDetail', $bookings->car_id) }}" class="badge badge-outline-primary">View</a></td>
                                     <td><a href="{{ route('updateBookingPage', $bookings->id) }}" class="badge badge-outline-success">Edit</a></td>

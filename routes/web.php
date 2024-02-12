@@ -86,6 +86,7 @@ Route::get('/book{id}', [HomeController::class, 'book'])->name('book');
 Route::post('/book_now{id}', [HomeController::class, 'book_now'])->name('book_now');
 Route::get('/deleteCar/{id}', [AdminController::class, 'deleteCar'])->name('deleteCar');
 Route::get('/deleteBooking/{id}', [HomeController::class, 'deleteBooking'])->name('deleteBooking');
+Route::get('/completePayment/{id}', [AdminController::class, 'completePayment'])->name('completePayment');
 Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->name('updateCarPage');
 Route::get('/updateBookingPage/{id}', [HomeController::class, 'updateBookingPage'])->name('updateBookingPage');
 

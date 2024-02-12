@@ -246,4 +246,9 @@ class AdminController extends Controller
         // // return $car;
         // return view('admin.updateCar', ['car' => $car]);
     }
+
+    public function completePayment(string $id){
+        $booking = DB::table('bookings')->where('id', $id)->update(['payment_status' => 'Completed']);
+        return redirect()->back()->with('message', 'Payment completed successfully');
+    }
 }

@@ -79,9 +79,9 @@
                                         <th> Model </th>
                                         <th> Quantity </th>
                                         <th> From </th>
-                                        <th> Days </th>
                                         <th> To </th>
                                         <th> Total Price </th>
+                                        <th> Payment Status </th>
                                         <th> Delete </th>
                                     </tr>
                                     </thead>
@@ -97,9 +97,13 @@
                                                 <td>{{$bookings->model}}</td>
                                                 <td>{{$bookings->quantity}}</td>
                                                 <td>{{$bookings->fromdate}}</td>
-                                                <td>{{$bookings->days}}</td>
                                                 <td>{{$bookings->todate}}</td>
                                                 <td>{{$bookings->totalprice}}</td>
+                                                @if ($bookings->payment_status == 'pending')
+                                                    <td><a href="{{ route('completePayment', $bookings->id) }}" class="badge badge-outline-success">Complete Payment</a></td>
+                                                @else
+                                                    <td>{{$bookings->payment_status}}</td>
+                                                @endif
                                                 <td><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
                                             </tr>
                                         @endforeach
