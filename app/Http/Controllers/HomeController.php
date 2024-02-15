@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\bookings;
+use Session;
+use Stripe;
 
 class HomeController extends Controller
 {
@@ -197,5 +199,32 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with('message', 'Booking not found.');
         }
+    }
+
+    public function stripe($id){
+        $booking = DB::table('bookings')->where('id', $id)->first();
+        // $totalprice = $booking->totalprice;
+
+        return view('stripe.stripe', compact('booking'));
+    }
+
+    public function stripePost(Request $request, $id)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $booking = bookings::find($id);
+    
+        $usd_price = round($booking->totalprice / 280);
+        Stripe\Charge::create ([
+                "amount" => $usd_price * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Payment done." 
+        ]);
+
+        Session::flash('success', 'Payment successful!');
+        $booking->payment_status = 'Completed';
+
+        $booking->save();
+        return redirect('/view_bookings');
     }
 }

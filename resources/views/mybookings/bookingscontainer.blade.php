@@ -13,6 +13,13 @@
                         </div>
                     @endif
 
+                    @if (Session::has('success'))
+                        <div class="alert alert-success text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <p>{{ Session::get('success') }}</p>
+                        </div>
+                    @endif
+
                     <div class="search mb-5">Search Booking: 
                         <input type="text" class="search_input" id="search" onkeyup=searchUser()>
                         <ul id="userList">
@@ -50,7 +57,7 @@
                                     <td style="text-align: center;">{{$bookings->days}}</td>
                                     <td style="text-align: center;">{{$bookings->totalprice}}</td>
                                     @if ($bookings->payment_status == 'pending')
-                                        <td style="text-align: center;"><a href="{{ route('completePayment', $bookings->id) }}" class="badge badge-outline-success">Complete Payment</a></td>
+                                        <td style="text-align: center;"><a href="{{ url('stripe', $bookings->id) }}" class="badge badge-outline-success">Pay via Card</a></td>
                                     @else
                                         <td style="text-align: center;">{{$bookings->payment_status}}</td>
                                     @endif

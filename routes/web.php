@@ -89,6 +89,8 @@ Route::get('/deleteBooking/{id}', [HomeController::class, 'deleteBooking'])->nam
 Route::get('/completePayment/{id}', [AdminController::class, 'completePayment'])->name('completePayment');
 Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->name('updateCarPage');
 Route::get('/updateBookingPage/{id}', [HomeController::class, 'updateBookingPage'])->name('updateBookingPage');
+Route::get('/stripe/{id}', [HomeController::class, 'stripe']);
+Route::post('stripe/{id}', [HomeController::class, 'stripePost'])->name('stripe.post');
 
 
 
