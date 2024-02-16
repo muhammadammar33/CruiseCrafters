@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\bookings;
 use Session;
 use Stripe;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -226,5 +227,11 @@ class HomeController extends Controller
 
         $booking->save();
         return redirect('/view_bookings');
+    }
+
+    public function print_pdf(string $id){
+        $booking = bookings::find($id);
+        $pdf = \PDF::loadView('mybookings.print_pdf', compact('booking'));
+        return $pdf->download('invoice.pdf');
     }
 }

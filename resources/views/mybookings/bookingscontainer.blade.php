@@ -43,6 +43,7 @@
                             <th style="text-align: center;"> View </th>
                             <th style="text-align: center;"> Edit </th>
                             <th style="text-align: center;"> Delete </th>
+                            <th style="text-align: center;"> Print Slip </th>
                         </tr>
                         </thead>
                         <tbody id="body">
@@ -62,9 +63,10 @@
                                         <td style="text-align: center;">{{$bookings->payment_status}}</td>
                                     @endif
                                     
-                                    <td><a href="{{ route('carDetail', $bookings->car_id) }}" class="badge badge-outline-primary">View</a></td>
-                                    <td><a href="{{ route('updateBookingPage', $bookings->id) }}" class="badge badge-outline-success">Edit</a></td>
-                                    <td><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
+                                    <td><a href="{{ route('carDetail', $bookings->car_id) }}" class="badge badge-outline-primary" style="text-align: center;">View</a></td>
+                                    <td><a href="{{ route('updateBookingPage', $bookings->id) }}" class="badge badge-outline-success" style="text-align: center;">Edit</a></td>
+                                    <td><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')" style="text-align: center;">Delete</a></td>
+                                    <td><a href="{{ url('print_pdf', $bookings->id) }}" class="badge badge-outline-danger" style="text-align: center;">Print</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

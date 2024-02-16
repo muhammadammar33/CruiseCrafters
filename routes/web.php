@@ -91,7 +91,7 @@ Route::get('/updateCarPage/{id}', [AdminController::class, 'updateCarPage'])->na
 Route::get('/updateBookingPage/{id}', [HomeController::class, 'updateBookingPage'])->name('updateBookingPage');
 Route::get('/stripe/{id}', [HomeController::class, 'stripe']);
 Route::post('stripe/{id}', [HomeController::class, 'stripePost'])->name('stripe.post');
-
+Route::get('/print_pdf/{id}', [HomeController::class, 'print_pdf']);
 
 
 Route::get('/show_bookings', [AdminController::class, 'showbookings']);
