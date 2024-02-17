@@ -64,7 +64,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/redirect', [HomeController::class, 'redirect']);
+Route::get('/redirect', [HomeController::class, 'redirect'])->middleware('auth','verified');
 Route::get('/category', [AdminController::class, 'category']);
 Route::get('/car', [AdminController::class, 'car']);
 Route::get('/allcars', [HomeController::class, 'allcars']);

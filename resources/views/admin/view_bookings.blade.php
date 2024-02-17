@@ -66,45 +66,45 @@
                                 </div>
                                 
 
-                                <div class="table-responsive">
+                                <div class="table-responsive" >
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th> Client Name </th>
-                                        <th> Client Email </th>
-                                        <th> Client Phone </th>
-                                        <th> Client Address </th>
-                                        <th> Car Image </th>
-                                        <th> Make </th>
-                                        <th> Model </th>
-                                        <th> Quantity </th>
-                                        <th> From </th>
-                                        <th> To </th>
-                                        <th> Total Price </th>
-                                        <th> Payment Status </th>
-                                        <th> Delete </th>
+                                        <th style="font-size: 9px"> Client Name </th>
+                                        <th style="font-size: 9px"> Client Email </th>
+                                        <th style="font-size: 9px"> Client Phone </th>
+                                        <th style="font-size: 9px"> Client Address </th>
+                                        <th style="font-size: 9px"> Car Image </th>
+                                        <th style="font-size: 9px"> Make </th>
+                                        <th style="font-size: 9px"> Model </th>
+                                        <th style="font-size: 9px"> Quantity </th>
+                                        <th style="font-size: 9px"> From </th>
+                                        <th style="font-size: 9px"> To </th>
+                                        <th style="font-size: 9px"> Total Price </th>
+                                        <th style="font-size: 9px"> Payment Status </th>
+                                        <th style="font-size: 9px"> Delete </th>
                                     </tr>
                                     </thead>
                                     <tbody id="body">
                                         @foreach ($data as $id=>$bookings)
                                             <tr>
-                                                <td>{{$bookings->name}}</td>
-                                                <td>{{$bookings->email}}</td>
-                                                <td>{{$bookings->phone}}</td>
-                                                <td>{{$bookings->address}}</td>
-                                                <td><img src="/car_images/{{$bookings->image}}" alt="Image" height="50px" width="50px"></td>
-                                                <td>{{$bookings->make}}</td>
-                                                <td>{{$bookings->model}}</td>
-                                                <td>{{$bookings->quantity}}</td>
-                                                <td>{{$bookings->fromdate}}</td>
-                                                <td>{{$bookings->todate}}</td>
-                                                <td>{{$bookings->totalprice}}</td>
+                                                <td style="font-size: 9px">{{$bookings->name}}</td>
+                                                <td style="font-size: 9px">{{$bookings->email}}</td>
+                                                <td style="font-size: 9px">{{$bookings->phone}}</td>
+                                                <td style="font-size: 9px">{{$bookings->address}}</td>
+                                                <td style="font-size: 9px"><img src="/car_images/{{$bookings->image}}" alt="Image" height="50px" width="50px"></td>
+                                                <td style="font-size: 9px">{{$bookings->make}}</td>
+                                                <td style="font-size: 9px">{{$bookings->model}}</td>
+                                                <td style="font-size: 9px">{{$bookings->quantity}}</td>
+                                                <td style="font-size: 9px">{{$bookings->fromdate}}</td>
+                                                <td style="font-size: 9px">{{$bookings->todate}}</td>
+                                                <td style="font-size: 9px">{{$bookings->totalprice}}</td>
                                                 @if ($bookings->payment_status == 'pending')
-                                                    <td><a href="{{ route('completePayment', $bookings->id) }}" class="badge badge-outline-success">Complete Payment</a></td>
+                                                    <td style="font-size: 9px"><a href="{{ route('completePayment', $bookings->id) }}" class="badge badge-outline-success">Complete Payment</a></td>
                                                 @else
-                                                    <td>{{$bookings->payment_status}}</td>
+                                                    <td style="font-size: 9px">{{$bookings->payment_status}}</td>
                                                 @endif
-                                                <td><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
+                                                <td style="font-size: 9px"><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
