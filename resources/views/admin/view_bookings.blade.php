@@ -82,7 +82,7 @@
                                         <th style="font-size: 9px"> To </th>
                                         <th style="font-size: 9px"> Total Price </th>
                                         <th style="font-size: 9px"> Payment Status </th>
-                                        <th style="font-size: 9px"> Delete </th>
+                                        <th style="font-size: 9px"> Booking Status </th>
                                     </tr>
                                     </thead>
                                     <tbody id="body">
@@ -104,7 +104,12 @@
                                                 @else
                                                     <td style="font-size: 9px">{{$bookings->payment_status}}</td>
                                                 @endif
-                                                <td style="font-size: 9px"><a href="{{ route('deleteBooking', $bookings->id) }}" class="badge badge-outline-danger" onclick="return confirm('Are you sure to delete booking of {{$bookings->model}}?')">Delete</a></td>
+                                                @if ($bookings->booking_status == 'continued')
+                                                    <td style="font-size: 9px"><a href="{{ route('bookingStatus', $bookings->id) }}" class="badge badge-outline-danger">End</a></td>
+                                                @else
+                                                    <td style="font-size: 9px">{{$bookings->booking_status}}</td>
+                                                @endif
+                                                
                                             </tr>
                                         @endforeach
                                     </tbody>

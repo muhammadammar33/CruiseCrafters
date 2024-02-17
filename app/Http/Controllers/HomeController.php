@@ -32,7 +32,12 @@ class HomeController extends Controller
         $categories = DB::table('categories')->get();
 
         if($usertype == 1){
-            return view('admin.home');
+            $totalusers = User::where('usertype', 0)->count();
+            $todayregistered = User::where('usertype', 0)->whereDate('created_at', date('Y-m-d'))->count();
+            $regesteredbefore = User::where('usertype', 0)->whereDate('created_at', '<', date('Y-m-d'))->count();
+            $increasedusers = $regesteredbefore - $todayregistered;
+            $userpercentage = round(($increasedusers / $totalusers) * 100,1);
+            return view('admin.home', compact('totalusers', 'userpercentage'));
         }
         else{
             return view('home.userpage', ['data' => $categories]);
@@ -125,7 +130,7 @@ class HomeController extends Controller
     public function showbookings(){
         if(Auth::check()){
             $user = Auth::user();
-            $bookings = DB::table('bookings')->where('name', $user->name)->orderBy('todate')->get();
+            $bookings = DB::table('bookings')->where('name', $user->name)->where('booking_status', 'continued')->orderBy('todate')->get();
             return view('mybookings.bookings', ['data' => $bookings]);
         }else{  
             return redirect('/login')->with('message', 'To view bookings, you must be logged in.');;

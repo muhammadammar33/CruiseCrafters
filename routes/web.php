@@ -92,6 +92,7 @@ Route::get('/updateBookingPage/{id}', [HomeController::class, 'updateBookingPage
 Route::get('/stripe/{id}', [HomeController::class, 'stripe']);
 Route::post('stripe/{id}', [HomeController::class, 'stripePost'])->name('stripe.post');
 Route::get('/print_pdf/{id}', [HomeController::class, 'print_pdf']);
+Route::get('/bookingStatus/{id}', [AdminController::class, 'bookingStatus'])->name('bookingStatus');
 
 
 Route::get('/show_bookings', [AdminController::class, 'showbookings']);

@@ -251,4 +251,9 @@ class AdminController extends Controller
         $booking = DB::table('bookings')->where('id', $id)->update(['payment_status' => 'Completed']);
         return redirect()->back()->with('message', 'Payment completed successfully');
     }
+
+    public function bookingStatus(string $id){
+        $booking = DB::table('bookings')->where('id', $id)->update(['booking_status' => 'Ended']);
+        return redirect()->back()->with('message', 'Booking Status updated successfully');
+    }
 }
