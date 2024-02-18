@@ -32,12 +32,31 @@ class HomeController extends Controller
         $categories = DB::table('categories')->get();
 
         if($usertype == 1){
+            //users
             $totalusers = User::where('usertype', 0)->count();
-            $todayregistered = User::where('usertype', 0)->whereDate('created_at', date('Y-m-d'))->count();
-            $regesteredbefore = User::where('usertype', 0)->whereDate('created_at', '<', date('Y-m-d'))->count();
-            $increasedusers = $regesteredbefore - $todayregistered;
-            $userpercentage = round(($increasedusers / $totalusers) * 100,1);
-            return view('admin.home', compact('totalusers', 'userpercentage'));
+            $todayregistered = User::where('usertype', 0)->whereDate('created_at', today())->count();
+            $userpercentage = round(($todayregistered / $totalusers) * 100, 1);
+
+            //categories
+            $totalcat = Category::count();
+            $todayadded = Category::whereDate('created_at', date('Y-m-d'))->count();
+            $catpercentage = round(($todayadded / $totalcat) * 100, 1);
+
+            //cars
+            $cars = Car::all();
+            $totalcars = 0;
+            foreach ($cars as $car) {
+                $totalcars += $car->totalCars;
+            }
+            $todayadded = Car::whereDate('updated_at', today())->count();
+            $carspercentage = round(($todayadded / $totalcars) * 100, 1);
+
+            //bookings
+            $totalbookings = bookings::count();
+            $todayadded = bookings::whereDate('created_at', date('Y-m-d'))->count();
+            $bookingspercentage = round(($todayadded / $totalbookings) * 100, 1);
+
+            return view('admin.home', compact('totalusers', 'userpercentage', 'totalcat', 'catpercentage', 'totalcars', 'carspercentage', 'totalbookings', 'bookingspercentage'));
         }
         else{
             return view('home.userpage', ['data' => $categories]);

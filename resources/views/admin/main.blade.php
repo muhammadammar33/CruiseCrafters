@@ -61,17 +61,28 @@
                 <div class="row">
                 <div class="col-9">
                     <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$17.34</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p>
+                    <h3 class="mb-0">{{$totalcat}}</h3>
+                    @if($catpercentage > 0)
+                        <p class="text-success ml-2 mb-0 font-weight-medium">{{$catpercentage}}%</p>
+                    @else
+                        <p class="text-danger ml-2 mb-0 font-weight-medium">{{$catpercentage}}%</p>
+                    @endif
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="icon icon-box-success">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
+                    @if($catpercentage > 0)
+                        <div class="icon icon-box-success ">
+                        <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                    @else
+                        <div class="icon icon-box-danger">
+                        <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                        </div>
+                    @endif
+                    
                 </div>
                 </div>
-                <h6 class="text-muted font-weight-normal">Revenue current</h6>
+                <h6 class="text-muted font-weight-normal">Total Categories</h6>
             </div>
             </div>
         </div>
@@ -81,17 +92,28 @@
                 <div class="row">
                 <div class="col-9">
                     <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$12.34</h3>
-                    <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
+                    <h3 class="mb-0">{{$totalcars}}</h3>
+                    @if($carspercentage > 0)
+                        <p class="text-success ml-2 mb-0 font-weight-medium">{{$carspercentage}}%</p>
+                    @else
+                        <p class="text-danger ml-2 mb-0 font-weight-medium">{{$carspercentage}}%</p>
+                    @endif
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="icon icon-box-danger">
-                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
-                    </div>
+                    @if($carspercentage > 0)
+                        <div class="icon icon-box-success ">
+                        <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                    @else
+                        <div class="icon icon-box-danger">
+                        <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                        </div>
+                    @endif
+                    
                 </div>
                 </div>
-                <h6 class="text-muted font-weight-normal">Daily Income</h6>
+                <h6 class="text-muted font-weight-normal">Total Cars</h6>
             </div>
             </div>
         </div>
@@ -101,17 +123,28 @@
                 <div class="row">
                 <div class="col-9">
                     <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$31.53</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                    <h3 class="mb-0">{{$totalbookings}}</h3>
+                    @if($bookingspercentage > 0)
+                        <p class="text-success ml-2 mb-0 font-weight-medium">{{$bookingspercentage}}%</p>
+                    @else
+                        <p class="text-danger ml-2 mb-0 font-weight-medium">{{$bookingspercentage}}%</p>
+                    @endif
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="icon icon-box-success ">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                    </div>
+                    @if($bookingspercentage > 0)
+                        <div class="icon icon-box-success ">
+                        <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                    @else
+                        <div class="icon icon-box-danger">
+                        <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                        </div>
+                    @endif
+                    
                 </div>
                 </div>
-                <h6 class="text-muted font-weight-normal">Expense current</h6>
+                <h6 class="text-muted font-weight-normal">Total Bookings</h6>
             </div>
             </div>
         </div>
