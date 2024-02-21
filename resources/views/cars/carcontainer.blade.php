@@ -6,6 +6,7 @@
                 {{session()->get('message')}}
             </div>
         @endif
+        <br>
         <div class="row">
             @foreach ($data as $car)
             @if ($car)

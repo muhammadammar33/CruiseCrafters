@@ -18,8 +18,16 @@ class HomeController extends Controller
     
     public function index(){
         $categories = DB::table('categories')->get();
+        $cars = DB::table('cars')->get()->where('year', '>' , 2020);
+        $users = DB::table('users')->get()->where('usertype', 0);
+        $totalusers = DB::table('users')->get()->where('usertype', 0)->count();
+        $cars = Car::all();
+        $totalcars = 0;
+        foreach ($cars as $car) {
+            $totalcars += $car->totalCars;
+        }
         // return view('admin.users', ['data' => $users]);
-        return view('home.userpage', ['data' => $categories]);
+        return view('home.userpage', compact('categories', 'cars', 'users', 'totalcars', 'totalusers'));
     }
 
     // public function about(){
@@ -237,6 +245,8 @@ class HomeController extends Controller
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $booking = bookings::find($id);
+        $booking->payment_method = 'Stripe';
+        $booking->save();
     
         $usd_price = round($booking->totalprice / 280);
         Stripe\Charge::create ([

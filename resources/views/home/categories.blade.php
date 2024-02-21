@@ -9,7 +9,7 @@
     <div class="row ftco-animate">
         <div class="col-md-12">
         <div class="carousel-testimony owl-carousel ftco-owl">
-            @foreach ($data as $id=>$cat)
+            @foreach ($categories as $cat)
             <div class="item">
             <div class="testimony-wrap rounded text-center py-4 pb-5">
                 <div class="user-img">

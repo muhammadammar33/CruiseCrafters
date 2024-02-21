@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Car;
 use Illuminate\Support\Facades\Auth;
+use App\Models\bookings;
 
 class AdminController extends Controller
 {
@@ -253,7 +254,32 @@ class AdminController extends Controller
     }
 
     public function bookingStatus(string $id){
-        $booking = DB::table('bookings')->where('id', $id)->update(['booking_status' => 'Ended']);
-        return redirect()->back()->with('message', 'Booking Status updated successfully');
+        $affectedRows = DB::table('bookings')->where('id', $id)->update(['booking_status' => 'Ended']);
+
+        if ($affectedRows > 0) {
+            $booking = bookings::find($id);
+
+            if ($booking) {
+                $booking->payment_method = 'Cash';
+                $booking->save();
+
+                $car = Car::find($booking->car_id);
+
+                if ($car) {
+                    $car->totalCars += $booking->quantity;
+                    $car->save();
+                    
+                    return redirect()->back()->with('message', 'Booking Status updated successfully');
+                } else {
+                    return redirect()->back()->with('error', 'Car not found');
+                }
+            } else {
+                return redirect()->back()->with('error', 'Booking not found');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Booking Status not updated');
+        }
+
+
     }
 }
