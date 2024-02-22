@@ -63,9 +63,9 @@
     }
     if ($("#transaction-history").length) {
       var areaData = {
-        labels: ["Paypal", "Stripe","Cash"],
+        labels: ["Stripe","Cash"],
         datasets: [{
-            data: [55, 25, 20],
+            data: [$stripepercentage, $cashpercentage],
             backgroundColor: [
               "#111111","#00d25b","#ffab00"
             ]
@@ -133,9 +133,9 @@
     }
     if ($("#transaction-history-arabic").length) {
       var areaData = {
-        labels: ["Paypal", "Stripe","Cash"],
+        labels: ["Stripe","Cash"],
         datasets: [{
-            data: [55, 25, 20],
+            data: [$stripepercentage, $cashpercentage],
             backgroundColor: [
               "#111111","#00d25b","#ffab00"
             ]

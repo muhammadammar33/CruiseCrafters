@@ -64,7 +64,14 @@ class HomeController extends Controller
             $todayadded = bookings::whereDate('created_at', date('Y-m-d'))->count();
             $bookingspercentage = round(($todayadded / $totalbookings) * 100, 1);
 
-            return view('admin.home', compact('totalusers', 'userpercentage', 'totalcat', 'catpercentage', 'totalcars', 'carspercentage', 'totalbookings', 'bookingspercentage'));
+            // Payments
+            $totalcash = bookings::where('payment_method', 'Cash')->sum('totalprice');
+            $totalstripe = bookings::where('payment_method', 'Stripe')->sum('totalprice');
+            $totalamount = $totalcash + $totalstripe;
+            $cashpercentage = round(($totalcash / $totalamount) * 100, 1);
+            $stripepercentage = round(($totalstripe / $totalamount) * 100, 1);
+
+            return view('admin.home', compact('totalusers', 'userpercentage', 'totalcat', 'catpercentage', 'totalcars', 'carspercentage', 'totalbookings', 'bookingspercentage', 'cashpercentage', 'stripepercentage'));
         }
         else{
             return view('home.userpage', ['data' => $categories]);

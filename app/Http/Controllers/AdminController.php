@@ -249,7 +249,10 @@ class AdminController extends Controller
     }
 
     public function completePayment(string $id){
-        $booking = DB::table('bookings')->where('id', $id)->update(['payment_status' => 'Completed']);
+        $booking = bookings::find($id);
+        $booking->update(['payment_status' => 'Completed']);
+        $booking->payment_method = 'Cash';
+        $booking->save();
         return redirect()->back()->with('message', 'Payment completed successfully');
     }
 
@@ -260,8 +263,6 @@ class AdminController extends Controller
             $booking = bookings::find($id);
 
             if ($booking) {
-                $booking->payment_method = 'Cash';
-                $booking->save();
 
                 $car = Car::find($booking->car_id);
 
