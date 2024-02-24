@@ -5,6 +5,7 @@
     @include('home.css')
   </head>
   <body>
+    @include('sweetalert::alert')
 
     @if(session('error'))
         <script>alert("{{ session('error') }}");</script>
@@ -50,6 +51,16 @@
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
     <script src="home/js/jquery.min.js"></script>
     <script src="home/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="home/js/popper.min.js"></script>

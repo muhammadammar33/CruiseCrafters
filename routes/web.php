@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Car;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +22,14 @@ Route::get('/', [HomeController::class, 'index']);
 // Route::get('/about', 'about.about');
 
 Route::get('/about', function () {
-    return view('about.about');
+    $users = DB::table('users')->get()->where('usertype', 0);
+    $totalusers = DB::table('users')->get()->where('usertype', 0)->count();
+    $cars = Car::all();
+    $totalcars = 0;
+    foreach ($cars as $car) {
+        $totalcars += $car->totalCars;
+    }
+    return view('about.about', compact('cars', 'users', 'totalcars', 'totalusers'));
 });
 
 Route::get('/services', function () {
@@ -27,7 +37,13 @@ Route::get('/services', function () {
 });
 
 Route::get('/pricing', function () {
-    return view('pricing.pricing');
+    $cars = Car::all();
+    // dd($cars);
+
+    // $hourrent = $cars->rentalprice / 5;
+    // $monthrent = $cars->rentalprice * 15;
+    // $fuelrent = $hourrent / 3;
+    return view('pricing.pricing', ['data' => $cars]);
 });
 
 // Route::get('/cars', function () {
@@ -69,6 +85,8 @@ Route::get('/category', [AdminController::class, 'category']);
 Route::get('/car', [AdminController::class, 'car']);
 Route::get('/allcars', [HomeController::class, 'allcars']);
 Route::get('/cars{name}', [HomeController::class, 'cars'])->name('cars');
+// Route::post('/book_trip', [HomeController::class, 'book_trip'])->name('book_trip');
+Route::get('/nocar', [HomeController::class, 'nocar'])->name('nocar');
 
 
 

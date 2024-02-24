@@ -12,6 +12,7 @@ use App\Models\bookings;
 use Session;
 use Stripe;
 use PDF;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -38,6 +39,16 @@ class HomeController extends Controller
     public function redirect(){
         $usertype = Auth::user()->usertype;
         $categories = DB::table('categories')->get();
+        $cars = DB::table('cars')->get()->where('year', '>' , 2020);
+        $users = DB::table('users')->get()->where('usertype', 0);
+        $totalusers = DB::table('users')->get()->where('usertype', 0)->count();
+        $cars = Car::all();
+        $totalcars = 0;
+        foreach ($cars as $car) {
+            $totalcars += $car->totalCars;
+        }
+        $user = Auth::user();
+        $bookings = DB::table('bookings')->where('name', $user->name)->where('booking_status', 'continued')->count();
 
         if($usertype == 1){
             //users
@@ -74,13 +85,29 @@ class HomeController extends Controller
             return view('admin.home', compact('totalusers', 'userpercentage', 'totalcat', 'catpercentage', 'totalcars', 'carspercentage', 'totalbookings', 'bookingspercentage', 'cashpercentage', 'stripepercentage'));
         }
         else{
-            return view('home.userpage', ['data' => $categories]);
+            return view('home.userpage', compact('categories', 'cars', 'users', 'totalcars', 'totalusers', 'bookings'));
         }
     }
 
-    // public function cars(){
-    //     $car = DB::table('cars')->get();
-    //     return view('cars.cars', ['data' => $car]);
+    public function nocar(){
+        Alert::error('Error', 'No Car available in this category!!!!!');
+        return redirect()->back();
+    }
+
+    // public function book_trip(Request $req){
+
+    //     $trip = new Category();
+    //     $category->name = $req->name;
+    //     $category->description = $req->description;
+
+    //     $image = $req->image;
+    //     $image_new_name = time().'.'.$image->getClientOriginalName();
+    //     $req->image->move('category_images', $image_new_name);
+    //     $category->image = $image_new_name;
+
+    //     $category->save();
+
+    //     return back()->withSuccess('Category added successfully');
     // }
 
     public function carDetail(string $id){

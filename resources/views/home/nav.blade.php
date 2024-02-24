@@ -17,7 +17,7 @@
             @if (Route::has('login'))
                 
                     @auth
-                    <li class="nav-item"><a href="/view_bookings" class="nav-link">My Bookings</a></li>
+                    <li class="nav-item"><a href="/view_bookings" class="nav-link">My Bookings ({{$bookings}})</a></li>
                     <li class="nav-item">
                         <x-app-layout>
 

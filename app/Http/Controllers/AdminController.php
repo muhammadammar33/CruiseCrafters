@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Car;
 use Illuminate\Support\Facades\Auth;
 use App\Models\bookings;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {

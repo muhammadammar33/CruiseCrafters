@@ -12,7 +12,7 @@
         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span></div>
         <div class="text w-100">
         <h3 class="heading mb-2">Wedding Ceremony</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+        <p>Elegant weddings made memorable with our expert planning and meticulous attention.</p>
         </div>
     </div>
             </div>
@@ -21,7 +21,7 @@
         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
         <div class="text w-100">
         <h3 class="heading mb-2">City Transfer</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+        <p>Efficient city transfers: stress-free rides to your destination, ensuring comfort and punctuality.</p>
         </div>
     </div>
             </div>
@@ -30,7 +30,7 @@
         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
         <div class="text w-100">
         <h3 class="heading mb-2">Airport Transfer</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+        <p>Efficient airport transfers for seamless travel, ensuring you arrive comfortably and on time.</p>
         </div>
     </div>
             </div>
@@ -39,7 +39,7 @@
         <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
         <div class="text w-100">
         <h3 class="heading mb-2">Whole City Tour</h3>
-        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+        <p>Discover your city's hidden gems with our immersive and informative guided tours. Explore, learn, enjoy!</p>
         </div>
     </div>
             </div>

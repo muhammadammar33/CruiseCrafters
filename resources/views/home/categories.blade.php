@@ -1,4 +1,4 @@
-<section class="ftco-section testimony-section bg-light">
+<section class="ftco-section testimony-section bg-light" id="categories">
     <div class="container">
     <div class="row justify-content-center mb-5">
         <div class="col-md-7 text-center heading-section ftco-animate">
@@ -22,7 +22,7 @@
                     @if ($cat->available > 0)
                         <p><a href="{{ route('cars', $cat->name) }}" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
                     @else
-                        <p><a href="" onclick="return alert('No cars in this category !!!!!')" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
+                        <p><a href="{{ url('nocar')}}" class="btn btn-primary py-2 px-3">Search Vehicle</a></p>
                     @endif
                     
                 {{-- <span class="position">Marketing Manager</span> --}}

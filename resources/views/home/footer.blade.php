@@ -4,7 +4,7 @@
         <div class="col-md">
         <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2"><a href="#" class="logo">Cruise<span>Crafters</span></a></h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>Explore with confidence and embark on your next road trip with CruiseCrafters at the wheel.</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -16,8 +16,8 @@
         <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2">Information</h2>
             <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">About</a></li>
-            <li><a href="#" class="py-2 d-block">Services</a></li>
+            <li><a href="/about" class="py-2 d-block">About</a></li>
+            <li><a href="/services" class="py-2 d-block">Services</a></li>
             <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
             <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
             <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
@@ -32,7 +32,7 @@
             <li><a href="#" class="py-2 d-block">Payment Option</a></li>
             <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
             <li><a href="#" class="py-2 d-block">How it works</a></li>
-            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+            <li><a href="/contact" class="py-2 d-block">Contact Us</a></li>
             </ul>
         </div>
         </div>
@@ -42,8 +42,8 @@
             <div class="block-23 mb-3">
                 <ul>
                 <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                <li><a href="tel:+923449713944"><span class="icon icon-phone"></span><span class="text">+92 344 971 3944</span></a></li>
+                <li><a href="mailto:muhammadcheema617@gmail.com"><span class="icon icon-envelope"></span><span class="text" style="font-size: 12px">muhammadcheema617@gmail.com</span></a></li>
                 </ul>
             </div>
         </div>
