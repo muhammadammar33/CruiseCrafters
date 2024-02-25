@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="home/css/style.css">
     </head>
     <body>
+        @include('sweetalert::alert')
 
         <!-- Navigation -->
         @include('contact.nav')

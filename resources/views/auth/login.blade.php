@@ -35,12 +35,12 @@
                         <i class='bx bx-lock-alt icon'></i>
                     </div>
 
-                    <div class="block mt-4">
+                    {{-- <div class="block mt-4">
                         <label for="remember_me" class="flex items-center">
                             <x-checkbox id="remember_me" name="remember" />
                             <span class="ml-2 text-sm blue">{{ __('Remember me') }}</span>
                         </label>
-                    </div>
+                    </div> --}}
 
                     <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
@@ -48,6 +48,10 @@
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
+
+                        <a class="underline text-sm text-white-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-4" href="{{ route('register') }}">
+                            {{ __('New comer?') }}
+                        </a>
 
                         <x-button class="ml-4">
                             {{ __('Log in') }}

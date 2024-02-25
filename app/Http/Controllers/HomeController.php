@@ -13,6 +13,8 @@ use Session;
 use Stripe;
 use PDF;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class HomeController extends Controller
 {
@@ -109,6 +111,23 @@ class HomeController extends Controller
 
     //     return back()->withSuccess('Category added successfully');
     // }
+
+    public function sendEmail(Request $request)
+    {
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+        ];
+        // dd($data);
+        // Send email
+        Mail::to('muhammadcheema617@gmail.com')->send(new ContactMail($data));
+        
+        Alert::success('Success', 'Your message has been sent successfully.');
+
+        return back()->with('data', $data);
+    }
 
     public function carDetail(string $id){
         $car = Car::where('id', $id)->first();

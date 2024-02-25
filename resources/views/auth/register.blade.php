@@ -69,10 +69,10 @@
                         <label class="label" for="image">Profile Image</label>
                         <i class='bx bx-camera icon'></i>
                     </div> --}}
-                    <div class="input_box">
+                    {{-- <div class="input_box">
                         <label class="blue" for="profile_photo_path">Car Image:</label>
                         <input class="blue" type="file" id="profile_photo_path" name="profile_photo_path" accept="profile_photo_path/*">
-                    </div>
+                    </div> --}}
                     
 
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

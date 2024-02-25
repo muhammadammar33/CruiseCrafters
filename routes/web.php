@@ -66,6 +66,8 @@ Route::get('/contact', function () {
     return view('contact.contact');
 });
 
+Route::post('/send-email', [HomeController::class, 'sendEmail'])->name('send.email');
+
 // Route::get('/mybookings', function () {
 //     return view('mybookings.bookings');
 // });
