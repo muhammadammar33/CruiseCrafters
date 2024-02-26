@@ -11,7 +11,7 @@
         <div class="wrapper">
             <div class="login_box">
                 <div class="login-header">
-                    <span>Register</span>
+                    <span>Login</span>
                 </div>
 
                 @if (session('status'))
